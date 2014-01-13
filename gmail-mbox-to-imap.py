@@ -27,15 +27,10 @@ class MyOptionParser(OptionParser):
     def __init__(self):
         usage = "usage: python %prog [options] MBOX [DEST]\n"\
                 "  MBOX UNIX style mbox file.\n"\
-                "  DEST is imap[s]://[USER[:PASSWORD]@]HOST[:PORT][/BOX]\n"\
+                "  DEST is imap[s]://[USER[:PASSWORD]@]HOST[:PORT]\n"\
                 "  DEST has a priority over the options."
         OptionParser.__init__(self, usage,
                               version="IMAP Upload " + __version__)
-        self.add_option("--gmail", action="callback", nargs=0, 
-                        callback=self.enable_gmail, 
-                        help="setup for Gmail. Equivalents to "
-                             "--host=imap.gmail.com --port=993 "
-                             "--ssl --retry=3")
         self.add_option("--host", 
                         help="destination hostname [default: %default]")
         self.add_option("--port", type="int", 
@@ -67,11 +62,6 @@ class MyOptionParser(OptionParser):
                           retry=0,
                           error=None, 
                           time_fields=["from", "received", "date"])
-    def enable_gmail(self, option, opt_str, value, parser):
-        parser.values.ssl = True
-        parser.values.host = "imap.gmail.com"
-        parser.values.port = 993
-        parser.values.retry = 3
 
     def set_time_fields(self, option, opt_str, value, parser):
         fields = []

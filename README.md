@@ -12,7 +12,7 @@ IMAP upload: http://imap-upload.sourceforge.net/, by OZAWA Masayuki
 
 ##Usage
 
-You will need to grab your Gmail's messages in mbox format. Go to <https://google.com/takeout>, create an archive containing your mails.
+You will need to grab your Gmail's messages in mbox format. Go to <https://google.com/takeout>, create an archive containing your mails, download it and unzip it.
 
 Then:
 
